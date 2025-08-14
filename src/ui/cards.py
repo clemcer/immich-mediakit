@@ -1,5 +1,6 @@
 from os import wait
 from typing import List
+import json
 
 from dash_bootstrap_components import ListGroup
 from dsh import htm, dbc, dcc
@@ -39,6 +40,8 @@ def mk(ass: models.Asset, modSim=True):
 
     imgPopId = {"type": "img-pop-multi", "aid": ass.autoId} if modSim else {"type": "img-pop", "aid": ass.autoId}
 
+    albums_js = json.dumps([{"id": alb.id, "name": alb.albumName} for alb in (ex.albs if ex and ex.albs else [])])
+
     return htm.Div([
         #------------------------------------------------------------------------
         # hidden meta data for export
@@ -46,7 +49,7 @@ def mk(ass: models.Asset, modSim=True):
         htm.Div(
             className="card-meta",
             style={"display": "none"},
-            **{"data-meta": f'{{"id":"{ass.id}","autoId":{ass.autoId},"originalFileName":"{ass.originalFileName}","originalPath":"{ass.originalPath}"}}'}
+            **{"data-meta": f'{{"id":"{ass.id}","autoId":{ass.autoId},"originalFileName":"{ass.originalFileName}","originalPath":"{ass.originalPath}","albums":{albums_js}}}'}
         ),
         #------------------------------------------------------------------------
         # dynamic
