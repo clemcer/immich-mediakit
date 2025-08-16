@@ -570,7 +570,7 @@ $spac: ($pad * 2) + ($gx * 2) + $sideW + 10px;
 	overflow: hidden !important;
 	text-overflow: ellipsis !important;
 
-	&.warp {
+	&.wrap {
 		white-space: normal !important;
 		overflow: visible !important;
 	}
@@ -1437,25 +1437,24 @@ $spac: ($pad * 2) + ($gx * 2) + $sideW + 10px;
 
 	.grid {
 		display: grid;
-		grid-template-columns: 20% 80%;
-		gap: 2px 2px;
-		margin: 5px 10px;
-		padding: 0px;
-
-		> *:nth-child(2n-1) {
-			justify-self: center;
-			white-space: nowrap;
-			font-size: 12px;
-			overflow: visible;
-			padding: 0px;
-		}
-
-		> *:nth-child(2n) {
-			justify-self: start;
-			// padding: 0;
-			// border: red 1px solid;
-		}
-	}
+		grid-template-columns: max-content 1fr;
+		column-gap: 6px;
+		row-gap: 2px;
+		align-items: start;
+	  }
+	  
+	  .grid > * { min-width: 0; }
+	  
+	  .grid .tag {
+		display: block;
+		white-space: normal !important;
+		overflow-wrap: anywhere;
+		word-break: break-word;
+		text-overflow: clip !important;
+		overflow: visible !important;
+		max-width: 100%;
+		line-height: 1.25;
+	  }
 
 	.tagbox {
 		// border: red 1px solid;

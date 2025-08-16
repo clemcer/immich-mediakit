@@ -146,17 +146,14 @@ def mk(ass: models.Asset, modSim=True):
                 ], className="RB")
             ], className="viewer"),
             dbc.CardBody([
-
                 dbc.Row([
                     htm.Span("id"), htm.Span(f"{ass.id}", className="tag"),
                     htm.Span("device"), htm.Span(f"{ass.deviceId}", className="tag second"),
-                    htm.Span("File"), htm.Span(f"{ass.originalFileName}", className="tag second"),
-                    htm.Span("Path"), htm.Span(f"{ass.originalPath}", className="tag second"),
+                    htm.Span("File"), htm.Span(f"{ass.originalFileName}", className="tag second wrap"),
+                    htm.Span("Path"), htm.Span(f"{ass.originalPath}", className="tag second wrap", title=f"{ass.originalPath}"),
                     htm.Span("CreateAt"), htm.Span(f"{ass.fileCreatedAt}", className="tag second"),
-
-                    *([ htm.Span("livePhoto"), htm.Span(f"{ass.pathVdo}", className="tag blue"), ] if isLive else []),
-                    *([ htm.Span("live VdoId"), htm.Span(f"{ass.vdoId}", className="tag blue"), ] if isLive else []),
-
+                    *([ htm.Span("livePhoto"), htm.Span(f"{ass.pathVdo}", className="tag blue wrap") ] if isLive else []),
+                    *([ htm.Span("live VdoId"), htm.Span(f"{ass.vdoId}", className="tag blue wrap") ] if isLive else []),
                 ], class_name="grid"
                 ) if db.dto.showGridInfo else None,
                 htm.Div([
