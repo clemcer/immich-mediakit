@@ -573,6 +573,11 @@ $spac: ($pad * 2) + ($gx * 2) + $sideW + 10px;
 	&.wrap {
 		white-space: normal !important;
 		overflow: visible !important;
+		overflow-wrap: anywhere;
+		word-break: break-word;
+		max-width: 100%;
+		display: block;
+		line-height: 1.25;
 	}
 
 	&.second {
@@ -1441,20 +1446,11 @@ $spac: ($pad * 2) + ($gx * 2) + $sideW + 10px;
 		column-gap: 6px;
 		row-gap: 2px;
 		align-items: start;
-	  }
-	  
-	  .grid > * { min-width: 0; }
-	  
-	  .grid .tag {
-		display: block;
-		white-space: normal !important;
-		overflow-wrap: anywhere;
-		word-break: break-word;
-		text-overflow: clip !important;
-		overflow: visible !important;
-		max-width: 100%;
-		line-height: 1.25;
-	  }
+	}
+
+	.grid > * {
+		min-width: 0;
+	}
 
 	.tagbox {
 		// border: red 1px solid;
