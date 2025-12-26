@@ -134,7 +134,8 @@ function groupAssetsByVisualGroups(data) {
 				assetId: item.assetId,
 				autoId: parseInt(item.autoId),
 				filename: item.filename,
-				path: item.path
+				path: item.path,
+				albums: item.albums
 			}))
 		}]
 	}
@@ -164,7 +165,8 @@ function groupAssetsByVisualGroups(data) {
 						assetId: meta.id,
 						autoId: parseInt(meta.autoId),
 						filename: meta.originalFileName,
-						path: meta.originalPath
+						path: meta.originalPath,
+						albums: meta.albums || []
 					})
 				} catch (e) {
 					console.error('[Export] Error parsing group asset meta:', e)
@@ -212,7 +214,8 @@ window.exportIdsToCSV = function exportIdsToCSV()
 							assetId: meta.id || '',
 							autoId: meta.autoId || '',
 							filename: meta.originalFileName || '',
-							path: meta.originalPath || ''
+							path: meta.originalPath || '',
+							albums: meta.albums || []
 						})
 					} catch (e) {
 						console.error('[Export] Error parsing meta data:', e, 'Raw data:', metaDiv.dataset.meta)
@@ -245,7 +248,8 @@ window.exportIdsToCSV = function exportIdsToCSV()
 				assetId: item.assetId,
 				autoId: parseInt(item.autoId),
 				filename: item.filename,
-				path: item.path
+				path: item.path,
+				albums: item.albums
 			}))
 		}
 
